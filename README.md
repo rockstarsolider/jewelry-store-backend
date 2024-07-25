@@ -8,4 +8,5 @@
 
 <h3>List of commits:</h3>
 <p>1. initial commit. category and product models added. separate admin panel for owner | 1403/4/3</p>
-<p>2. Persianization of the admin panel. django_jalali added for dates. add action,search, filter to admin panel| 1403/4/4</p>
+<p>2. Persianization of the admin panel. django_jalali added for dates. add action,search, filter to admin panel | 1403/4/4</p>
+<p>3. added serializers for category and product model | 1403/4/4</p>
