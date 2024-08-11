@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response   
-from .models import Category, Product
-from .serializers import CategorySerializer, ProductSerializer
+from .models import Category, Product, Video, Image
+from .serializers import CategorySerializer, ProductSerializer, ProductsSerializer
 from django.core.paginator import Paginator,EmptyPage
 
 class ProductList(APIView):  
@@ -22,15 +22,14 @@ class ProductList(APIView):
             products = products.filter(price__lte = to_price)
         if search:
             products = products.filter(name__icontains = search)
-        if order:
-            products = products.order_by(order).reverse()
+        products = products.order_by('price').reverse() if order=='price' else products.order_by('created_at').reverse()
         paginator = Paginator(products, per_page=perpage)
         try:
             products = paginator.page(number=page)
         except EmptyPage:
             products = []
-        serializer = ProductSerializer(products, many=True)  
-        return Response(serializer.data) 
+        serializer = [ProductsSerializer(products, many=True).data,paginator.count]  
+        return Response(serializer) 
 
 class CategoryList(APIView):
     def get(self, request):
@@ -41,5 +40,9 @@ class CategoryList(APIView):
 class ProductDetail(APIView):
     def get(self, request, pk=None):
         product = Product.objects.get(pk = pk)
-        serializer = ProductSerializer(product)
-        return Response(serializer.data)
+        videos = Video.objects.filter(product_id = pk).values('video')
+        videos = [video['video'] for video in videos]
+        images = Image.objects.filter(product_id = pk).values('image')
+        images = [image['image'] for image in images]
+        serializer = [ProductSerializer(product).data,videos,images]
+        return Response(serializer)

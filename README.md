@@ -11,3 +11,4 @@
 <p>2. Persianization of the admin panel. django_jalali added for dates. add action,search, filter to admin panel | 1403/5/4</p>
 <p>3. added serializers for category and product model | 1403/5/4</p>
 <p>4. video and image models added.  views for product and category | 1403/5/14</p>
+<p>5. persian numbers. django admin interface | 1403/5/21</p>
