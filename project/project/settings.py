@@ -141,10 +141,8 @@ MAX_ITEMS_PER_PAGE = 20
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    'http://127.0.0.1:5500',
+    'http://pandora.liara.run',
+    'https://pandora.liara.run'
 ]
 X_FRAME_OPTIONS = "SAMEORIGIN"
-
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]

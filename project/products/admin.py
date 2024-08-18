@@ -18,8 +18,9 @@ def fa_num(num):
     return translate_number(locale.format_string("%d", num, grouping=True))
 
 class ProductAdmin(ImportExportModelAdmin):
-    search_fields = ("name",'description')
-    list_display = ('name','formatted_price','category_id', 'datetime')
+    search_fields = ("name",'id','description','price','created_at')
+    list_display = ('pid','name','formatted_price','category_id', 'datetime')
+    list_display_links = ('pid','name',)
     list_filter = ('category_id','created_at')
     actions = ('delete_image','set_price_to_zero',)
     resource_class = ProductResource
@@ -37,10 +38,17 @@ class ProductAdmin(ImportExportModelAdmin):
     def datetime(self, obj):
         return translate_number(format_persian_datetime(convert_to_persian_calendar(obj.created_at)))
     datetime.short_description = 'منتشر شده در'
+    datetime.admin_order_field = 'price'
+
+    def pid(self, obj):
+        return fa_num(obj.id)
+    pid.short_description = 'کد محصول'
+    pid.admin_order_field = 'price'
 
     def formatted_price(self, obj):   
         return f"{fa_num(obj.price)} تومان "
     formatted_price.short_description = 'قیمت'
+    formatted_price.admin_order_field = 'price'
 
     formfield_overrides = {
         models.IntegerField: {'widget': forms.NumberInput(attrs={'size':'50'})},
