@@ -3,7 +3,7 @@
     "platform": "django",
     "django": {
         "pythonVersion": "3.12",
-        "collectStatic": false
+        "collectStatic": true
     },
     "disks":[
         {
