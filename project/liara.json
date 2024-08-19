@@ -1,0 +1,14 @@
+{
+    "app": "pandora-api", 
+    "platform": "django",
+    "django": {
+        "pythonVersion": "3.12",
+        "collectStatic": false
+    },
+    "disks":[
+        {
+            "name": "disk",
+            "mountTo": "database"
+        }
+    ]
+}
