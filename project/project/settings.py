@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+import environ  
+
+# Initialise environment variables  
+env = environ.Env()   
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -66,7 +71,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        "DIRS": [os.path.join(BASE_DIR, 'templates/')],
+        "DIRS": [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,9 +91,9 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default': { 
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR  /'db.sqlite3',
+        'NAME': BASE_DIR / 'data'/ 'db.sqlite3',
     }
 }
 
@@ -136,7 +141,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "media/"
 
 STATIC_URL = '/static/'  
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 MAX_ITEMS_PER_PAGE = 20 
@@ -144,7 +149,6 @@ MAX_ITEMS_PER_PAGE = 20
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    'http://127.0.0.1:5500',
     'http://pandora.liara.run',
     'https://pandora.liara.run'
 ]

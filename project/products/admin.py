@@ -5,17 +5,14 @@ from django import forms
 from custom_translate.templatetags.custom_translation_tags import translate_number
 from custom_translate.templatetags.persian_calendar_convertor import convert_to_persian_calendar ,format_persian_datetime
 from django.contrib.auth.models import User, Group
-import locale
 from import_export.admin import ImportExportModelAdmin
 from .resource import ProductResource
-from django.contrib.admin import AdminSite 
-locale.setlocale(locale.LC_ALL, 'en_US')
 
 admin.site.unregister(User)
 admin.site.unregister(Group)
 
 def fa_num(num):
-    return translate_number(locale.format_string("%d", num, grouping=True))
+    return translate_number(f'{num:,}')
 
 class ProductAdmin(ImportExportModelAdmin):
     search_fields = ("name",'id','description','price','created_at')

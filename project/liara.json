@@ -1,14 +1,12 @@
 {
-    "app": "pandora-api", 
-    "platform": "django",
-    "django": {
-        "pythonVersion": "3.12",
-        "collectStatic": true
-    },
     "disks":[
         {
-            "name": "disk",
-            "mountTo": "database"
+            "name": "files",
+            "mountTo": "media"
+        },
+        {
+            "name": "database",
+            "mountTo": "data"
         }
     ]
 }
