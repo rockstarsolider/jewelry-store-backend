@@ -31,9 +31,8 @@ SECRET_KEY = 'django-insecure-5c3a1epe4z=jqm)55h6^lb_uz5hmzt-$csarep%w)mt8b2y_3c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 ALLOWED_HOSTS = [
-    'https://pandora-api.liara.run/',
-    'pandora-api.liara.run',
-    '127.0.0.1'
+    'https://pandora-shop.liara.run/',
+    'pandora-shop.liara.run',
 ]
 
 
