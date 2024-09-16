@@ -31,8 +31,9 @@ SECRET_KEY = 'django-insecure-5c3a1epe4z=jqm)55h6^lb_uz5hmzt-$csarep%w)mt8b2y_3c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 ALLOWED_HOSTS = [
-    'https://pandora-shop.liara.run/',
-    'pandora-shop.liara.run',
+    'https://pandoraa.liara.run/',
+    'pandoraa.liara.run',
+    '127.0.0.1'
 ]
 
 
@@ -58,7 +59,6 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -148,7 +148,7 @@ MAX_ITEMS_PER_PAGE = 20
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    'http://pandora.liara.run',
-    'https://pandora.liara.run'
+    'http://pandora-shop.liara.run',
+    'https://pandora-shop.liara.run'
 ]
 X_FRAME_OPTIONS = "SAMEORIGIN"
